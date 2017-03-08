@@ -1,0 +1,19 @@
+spring:
+    application:
+        name: edge-microservice
+
+server:
+    port: 0
+
+configurationServer:
+    port: 9000
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:${configurationServer.port}/eureka/    
+        eurekaServerPort: ${configurationServer.port}
+    instance:
+        preferIpAddress: true
+        metadataMap:
+            instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}

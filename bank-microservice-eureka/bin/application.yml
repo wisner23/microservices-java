@@ -1,0 +1,21 @@
+spring:
+    application.name: eureka-application
+
+configurationServer:
+    port: 9000
+
+server:
+    port: ${configurationServer.port}
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:${configurationServer.port}/eureka/    
+        registerWithEureka: false
+        fetchRegistry: false 
+        eurekaServerPort: ${configurationServer.port}
+    instance:
+        preferIpAddress: true
+
+ 
+

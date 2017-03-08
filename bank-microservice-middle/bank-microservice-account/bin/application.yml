@@ -1,0 +1,16 @@
+spring:
+    application:
+        name: account-microservice
+
+server:
+    port: 0
+
+configurationServer:
+    port: 9000
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:${configurationServer.port}/eureka/
+        fetchRegistry: true
+        eurekaServerPort: ${configurationServer.port}
